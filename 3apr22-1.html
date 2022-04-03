@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3apr22-1</title>
+<!-- <link rel="stylesheet" href="3apr22-1.css"> -->
+<style>
+    :root{
+        background-color:rgb(12, 11, 11);
+        --scannercolor:#3fefef;
+        --imageColor:130deg;
+    }
+    *{
+        margin: 0;
+        padding: 0;
+        font-family: consolas;
+    }
+    body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          background: var(--bgcolor);
+    }
+    .scan{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .scan .fingerprint{
+        position: relative;
+        width: 300px;
+        height: 230px;
+        background: url(https://www.pngall.com/wp-content/uploads/2016/06/Fingerprint-Free-Download-PNG.png );
+        background-repeat: no-repeat;
+        background-size: 300px;
+   }
+   .scan .fingerprint::before{
+         content:'';
+         position: absolute;
+         top: 0;
+         left: 0;
+        width: 300px;
+        height: 230px;
+        background: url(https://www.pngall.com/wp-content/uploads/2016/06/Fingerprint-Free-Download-PNG.png);
+        filter: invert(100%) sepia(60%) saturate(3000%) hue-rotate(var(--imagecolor)) brightness(95%) contrast(80%);
+        background-size: 300px;
+        animation: animate 4s ease-in-out infinite;
+    }
+    @keyframes animate {
+        0%, 100%{
+            height: 0%;
+        }
+        50%{
+            height: 100%;
+        }
+    }
+    .scan .fingerprint::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background: var(--scannercolor);
+        border-radius: 8px;
+        filter: drop-shadow(0 0 20px #3fefef)
+        drop-shadow(0 0 60px #3fefef);
+        animation: moveLine 4s ease-in-out infinite;
+    }
+    
+  @keyframes moveLine {
+      0%, 100% {
+          top:0%;
+      }
+      
+      50% {
+          top:100%;
+      }
+  }
+    .scan h3 {
+        text-transform: uppercase;
+        font-size: 2em;
+        letter-spacing: 2px;
+        margin-top: 20px;
+        color: var(--scannercolor);
+        filter: drop-shadow(0 0 20px var(--scannercolor)) drop-shadow(0 0 60px var(--scannercolor));
+        animation:animate_text 0.5s steps(1) infinite;
+    }
+
+       @keyframes animate_text{
+            0%, 100%{
+                opacity: 0;
+            }
+            50%{
+                opacity: 1;
+            }
+        }
+    
+
+
+</style>
+</head>
+
+<body>
+    <div class="scan">
+    </div>
+    <div class="scan">
+        <div class="fingerprint"></div>
+        <h3>scanning...</h3>
+    </div>
+    
+</body>
+</html>
